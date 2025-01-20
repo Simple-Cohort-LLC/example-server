@@ -16,11 +16,15 @@ Node version 20+
 
 `npm start`
 
+`npx prisma generate` (optional, to initialize the db)
+
 #### Additional Features
 
 This server also contains a [Prisma](https://github.com/prisma) database for storing content from the [Zora](https://zora.co) network.
 
 There is a script in [./scripts/zora.js](./scripts/zora.js) that scrapes the Zora web app and stores token information in the prisma db. This content can be used to provide some more interesting content to your Farcaster client from Zora. See the `/zora` endpoint in [./app.js](./app.js) for how you can retrieve it.
+
+To initiliaze prisma, run `npx prisma generate`.
 
 #### API Key
 
