@@ -1,6 +1,10 @@
 ### Example Server
 
-A simple NodeJS server for Farcaster clients. Uses the Neynar Nodejs SDK. View the documentation there for how the [nodejs sdk](https://github.com/neynarxyz/nodejs-sdk) works.
+A simple NodeJS server for Farcaster clients.
+
+Uses the Neynar Nodejs SDK. View the documentation there for how the [nodejs sdk](https://github.com/neynarxyz/nodejs-sdk) works. You'll need an account with an API key.
+
+Uses [Pinata's APIs](https://docs.pinata.cloud/api-reference/introduction). View documentation for how to get set up and get your API key.
 
 #### Requirements
 
