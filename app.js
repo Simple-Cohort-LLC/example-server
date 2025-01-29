@@ -149,7 +149,7 @@ app.post("/cast", async (req, res) => {
     const options = {};
 
     if (channel) {
-      options.channelId = channel;
+      options.channel_id = channel;
     }
 
     if (embeds && embeds.length > 0) {
@@ -392,6 +392,32 @@ app.post("/frame-action", async (req, res) => {
   } catch (err) {
     console.error("Error performing frame action:", err);
     return res.status(500).json({ error: "Failed to perform frame action" });
+  }
+});
+
+app.get("/user-follows", async (req, res) => {
+  const { fid, targetFid } = req.query;
+  const fetch = (await import("node-fetch")).default;
+  try {
+    const url = `https://api.neynar.com/v2/farcaster/user/bulk?fids=${fid}&viewer_fid=${targetFid}`;
+    const options = {
+      method: "GET",
+      headers: { accept: "application/json", api_key: NEYNAR_API_KEY },
+    };
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((json) => {
+        res.status(200).json(json);
+      })
+      .catch((err) => console.error("error:" + err));
+  } catch (error) {
+    if (error.isAxiosError) {
+      console.error("Error:", error);
+      res.status(error.response.status).json({ error });
+    } else {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Server error" });
+    }
   }
 });
 
